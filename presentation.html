@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=1024, user-scalable=no">
+
+    <title>Bacon.js Presentation</title>
+
+    <link rel="stylesheet" href="deck/core/deck.core.css">
+    <link rel="stylesheet" href="deck/extensions/goto/deck.goto.css">
+    <link rel="stylesheet" href="deck/extensions/menu/deck.menu.css">
+    <link rel="stylesheet" href="deck/extensions/navigation/deck.navigation.css">
+    <link rel="stylesheet" href="deck/extensions/status/deck.status.css">
+    <link rel="stylesheet" href="deck/extensions/hash/deck.hash.css">
+    <link rel="stylesheet" href="deck/extensions/scale/deck.scale.css">
+    <link rel="stylesheet" href="deck/themes/style/web-2.0.css">
+    <link rel="stylesheet" href="deck/themes/transition/horizontal-slide.css">
+    <link rel="stylesheet" href="css/custom.css">
+
+    <script src="lib/modernizr.custom.js"></script>
+</head>
+<body class="deck-container">
+
+<!-- Begin slides. Just make elements with a class of slide. -->
+
+<section class="white slide" id="start">
+    <h1>Bacon.js</h1>
+</section>
+
+<section class="white slide" id="bacon">
+    <h2><img src="img/bacon-logo.png"/></h2>
+    <blockquote>Turns your event spaghetti into clean and declarative feng shui bacon, by switching from imperative to
+        functional.
+    </blockquote>
+</section>
+
+<section class="slide" id="intro">
+    <h2>Bacon.js</h2>
+    <ul>
+        <li class="slide" id="intro-frp">Functional Reactive Programming (FRP) library for JS</li>
+        <li class="slide" id="intro-func">Work with event streams in a functional paradigm</li>
+        <li class="slide" id="intro-gui">GUI data-binding via Bacon jQuery extensions</li>
+    </ul>
+</section>
+
+<section class="slide" id="rp-intro">
+    <h2>Reactive Programming</h2>
+    <ul>
+        <li class="slide" id="rp-def">Oriented towards propagation of change</li>
+        <li class="slide" id="rp-dataflows">Data flows, a series of connections</li>
+    </ul>
+</section>
+
+<section class="slide" id="rp-imperativecode">
+    <h2>Reactive Programming</h2>
+
+    <p>Imperative:</p>
+    <blockquote>
+        a = 1<br/>
+        b = 2<br/>
+        c = a + b<br/>
+        // c == 3<br/>
+        b = 2<br/>
+        // c == 3
+    </blockquote>
+</section>
+
+<section class="slide" id="rp-reactivecode">
+    <h2>Reactive Programming</h2>
+
+    <p>Reactive:</p>
+    <blockquote>
+        a = 1<br/>
+        b = 2<br/>
+        c = a + b<br/>
+        // c == 3<br/>
+        b = 2<br/>
+        // c == 4
+    </blockquote>
+</section>
+
+<section class="slide" id="rp-conclusion">
+    <h2>Reactive Programming</h2>
+    <ul>
+        <li class="slide" id="rp-decl">Declarative</li>
+        <li class="slide" id="rp-how"><em>What</em>, not <em>how</em></li>
+        <li class="slide" id="rp-controlflow">Minimize (or eliminate) description of control flow</li>
+        <li class="slide" id="rp-parallelism">Allows for parallelism</li>
+    </ul>
+</section>
+
+<section class="slide" id="rp-example1">
+    <h2>Reactive Programming</h2>
+
+    <h3>Examples:</h3>
+
+    <p>Spreadsheets</p>
+    <img src="img/spreadsheet.jpg"/>
+</section>
+
+<section class="slide" id="rp-example2">
+    <h2>Reactive Programming</h2>
+
+    <h3>Examples:</h3>
+
+    <p>Logic circuit</p>
+    <img src="img/circuit.png"/>
+</section>
+
+<section class="slide" id="fn-intro">
+    <h2>Functional Programming</h2>
+    <ul>
+        <li class="slide" id="fn-decl">Declarative</li>
+        <li class="slide" id="fn-functions">Oriented towards defining programs in terms of functions</li>
+        <li class="slide" id="fn-math">Output only depends on input arguments</li>
+        <li class="slide" id="fn-state">Minimize state and side-effects</li>
+        <li class="slide" id="fn-pure">Pure</li>
+    </ul>
+</section>
+
+<section class="slide" id="fn-more">
+    <h2>Functional Programming</h2>
+    <ul>
+        <li class="slide" id="fn-recursion">Favor recursion over iteration</li>
+        <li class="slide" id="fn-iteration">Iteration involves a lot of state</li>
+    </ul>
+    <div class="slide" id="fn-fib">
+        <blockquote>
+            fibRec f s = f : fibRec s (f + s)<br/>
+            fibonacci = fibRec 0 1<br/>
+            main = print (fibonacci !! 10)
+        </blockquote>
+        <p>The ':' operator adds an element to the head of a list. So, 1 : [2,3] yields [1,2,3]</p>
+    </div>
+</section>
+
+<section class="slide" id="fn-more2">
+    <h2>Functional Programming</h2>
+    <ul>
+        <li class="slide" id="fn-higher">Higher order functions</li>
+        <li class="slide" id="fn-mapetc">Map, filter, reduce</li>
+    </ul>
+</section>
+
+<section class="slide" id="frp">
+    <h2>Functional Reactive Programming</h2>
+    <ul>
+        <li class="slide" id="frp-fn">Reactive programming using functional programming</li>
+        <li class="slide" id="frp-time">Leads to writing programs in terms of functions that depend on values that change over time</li>
+    </ul>
+</section>
+
+<section class="slide" id="bacon!">
+    <h1><img src="img/bacon.jpg"/></h1>
+</section>
+
+<section class="slide" id="bacon-events">
+    <h2>Bacon.js</h2>
+    <ul>
+        <li class="slide" id="bacon-prim">Primitives: EventStream and Property</li>
+        <li class="slide" id="bacon-stream">EventStreams are streams of discrete events or values</li>
+        <li class="slide" id="bacon-stream1">After an event on a stream occurs, it's gone</li>
+        <li class="slide" id="bacon-property">Properties are like streams but have a current value</li>
+        <li class="slide" id="bacon-property1">Every time you "sink" a property, you get the current value</li>
+        <li class="slide" id="bacon-obs">EventStreams and Properties share an "observable" interface</li>
+    </ul>
+</section>
+
+<section class="slide" id="bacon-example1">
+    <h2>Bacon.js Bindings</h2>
+    <div>
+        <input type="text" id="money"/><span id="output"></span>
+        <p>Code:</p>
+        <pre>
+function toMoney(value) { return accounting.formatMoney(value, '$', 0); }
+var textbox = Bacon.$.textFieldValue($('#money'), 10);
+textbox.map(toMoney)
+       .assign($('#output'), 'text');
+
+textbox.changes()
+       .filter(function(value) { return value < 0; })
+       .onValue(function() { alert('Value must not be negative.'); });
+        </pre>
+    </div>
+</section>
+
+<section class="slide" id="bacon-bindings">
+    <h2>Bacon.js Bindings</h2>
+    <p>Bacon.jQuery comes with bindings for basic inputs (like Bacon.$.textFieldValue)</p>
+    <section class="slide" id="bacon-custom">
+    <p>You can make your own:</p>
+    <pre>
+function simpleTextBinding(element) {
+    return Bacon.Binding({
+        get: function() { return element.text(); },
+        set: function(value) { element.text(value); },
+        events: Bacon.never()
+        // optionally, an initialValue property
+    });
+}
+    </pre>
+    </section>
+</section>
+
+<section class="slide" id="bacon-example2">
+    <h2>Bacon.js Combinations</h2>
+    <input type="text" id="first"/><input type="text" id="last"/><span id="output2"></span>
+    <p>Code:</p>
+    <pre>
+var first = Bacon.$.textFieldValue($('#first'));
+var last = Bacon.$.textFieldValue($('#last'));
+var output = simpleTextBinding($('#output2'));
+var fullNameStream = Bacon.combineTemplate({ firstName: first, lastName: last })
+        .map(function(combined) {
+            return 'Hi, ' + combined.firstName + ' ' + combined.lastName;
+        });
+output.addSource(fullNameStream);
+    </pre>
+</section>
+
+<section class="slide" id="bacon-bus">
+    <h2>The Bacon Bus</h2>
+    <p>Like an event stream that has a .push(event) method</p>
+    <p class="slide" id="bacon-busplug">.plug(sourceStream) method delivers source stream events to subscribers</p>
+    <section class="slide" id="bacon-bus-example">
+        <pre>
+var bus = new Bacon.Bus();
+bus.onValue(function(v) {
+    alert(v + ' on a Bus!');
+});
+bus.push('Bacon'); // Will alert 'Bacon on a Bus!'
+        </pre>
+    </section>
+</section>
+
+<!-- End slides. -->
+
+
+<!-- Begin extension snippets. Add or remove as needed. -->
+
+<!-- deck.navigation snippet -->
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<p class="deck-status">
+    <span class="deck-status-current"></span>
+    /
+    <span class="deck-status-total"></span>
+</p>
+
+<form action="." method="get" class="goto-form">
+    <label for="goto-slide">Go to slide:</label>
+    <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+    <datalist id="goto-datalist"></datalist>
+    <input type="submit" value="Go">
+</form>
+
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<!-- End extension snippets. -->
+
+
+<!-- Required JS files. -->
+<script src="lib/jquery-1.7.2.min.js"></script>
+<script src="deck/core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="deck/core/deck.core.js"></script>
+<script src="deck/extensions/hash/deck.hash.js"></script>
+<script src="deck/extensions/menu/deck.menu.js"></script>
+<script src="deck/extensions/goto/deck.goto.js"></script>
+<script src="deck/extensions/status/deck.status.js"></script>
+<script src="deck/extensions/navigation/deck.navigation.js"></script>
+<script src="deck/extensions/scale/deck.scale.js"></script>
+
+<script src="lib/Bacon.js"></script>
+<script src="lib/bacon.jquery.js"></script>
+<script src="lib/accounting.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+    $(function() {
+        $.deck('.slide');
+
+        function simpleTextBinding(element) {
+            return Bacon.Binding({
+                get: function() { return element.text(); },
+                set: function(value) { element.text(value); },
+                events: Bacon.never()
+                // optionally, an initialValue property
+            });
+        }
+
+        var textbox = Bacon.$.textFieldValue($('#money'), 10);
+        textbox.map(function(value) { return accounting.formatMoney(value, '$', 0); })
+                .assign($('#output'), 'text');
+
+        textbox.changes()
+                .filter(function(value) { return value < 0; })
+                .onValue(function() { alert('Value must not be negative.'); });
+
+        var first = Bacon.$.textFieldValue($('#first'));
+        var last = Bacon.$.textFieldValue($('#last'));
+        var output = simpleTextBinding($('#output2'));
+        var fullNameStream = Bacon.combineTemplate({ firstName: first, lastName: last })
+                .filter(function(combined) { return combined.firstName !== '' && combined.lastName !== ''; })
+                .map(function(combined) {
+                    return 'Hi, ' + combined.firstName + ' ' + combined.lastName;
+                });
+        output.addSource(fullNameStream);
+    });
+
+
+</script>
+</body>
+</html>
